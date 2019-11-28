@@ -52,4 +52,43 @@ int main()
         }
         printf("\n");
     }
+    i=0;
+    j=len-1;
+    char res[dp[0][len-1]];
+    k=0;
+    while(j>=i){
+        if(str[i]==str[j]){
+            res[k]=str[i];
+            k++;
+            i++;
+            j--;
+        }
+        else{
+            if(dp[i][j-1]>=dp[i+1][j]){
+                j--;
+            }
+            else{
+                i++;
+            }
+        }
+    }
+    int m=k;
+    if(dp[0][len-1]%2==0){
+        m=m-1;
+        while(m>=0){
+            res[k]=res[m];
+            k++;
+            m--;
+        }
+    }
+    else{
+        m=m-2;
+        while(m>=0){
+            res[k]=res[m];
+            k++;
+            m--;
+        }
+    }
+    res[k]='\0';
+    printf("%s",res);
 }
