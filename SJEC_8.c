@@ -38,4 +38,24 @@ int main(){
         }
         printf("\n");
     }
+    if(dp[n-1][k]==0){
+        printf("No subset is found");
+    }
+    else{
+        int i=n-1;
+        int j=k;
+        while(i>0 && j>0){
+            if(dp[i-1][j]==1){
+                i--;
+            }
+            else{
+                printf("%d ",arr[i]);
+                j=j-arr[i];
+                i=i-1;
+            }
+        }
+        if(j!=0){
+            printf("%d ",arr[0]);
+        }
+    }
 }
